@@ -1,26 +1,34 @@
 {
-  "name": "emoji-animated",
+  "name": "holiday-emoji-animated",
   "description": "A simple vuejs animated emoji plugin",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "private": false,
   "author": {
     "name": "Farnaz Erfanian Daneshvar",
     "email": "edfarnaz@gmail.com"
   },
+  "repository": "https://github.com/Farnazed/emoji-animated",
+  "bugs": "https://github.com/Farnazed/emoji-animated/issues",
+  "keywords": [
+    "vuejs",
+    "emoji",
+    "animated"
+  ],
+  "license": "MIT",
+  "files": [
+    "dist/*"
+  ],
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "build-library": "vue-cli-service build --target lib --name vue-hello-world-simple ./src/install.js",
     "lint": "vue-cli-service lint"
   },
+  "main": ".dist/vue-hello-world-simple.common.js",
   "dependencies": {
     "core-js": "^3.8.3",
     "vue": "^2.6.14"
   },
-  "main": ".dist/vue-hello-world-simple.common.js",
-  "files": [
-    "dist/*"
-  ],
   "devDependencies": {
     "@babel/core": "^7.12.16",
     "@babel/eslint-parser": "^7.12.16",

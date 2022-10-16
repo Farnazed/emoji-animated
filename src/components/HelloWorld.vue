@@ -7,12 +7,57 @@
 </template>
 <script>
 export default {
+  data() {
+    return {
+      holidays: {
+        halloween: {
+          from: '10-15',
+          to: '10-31',
+          emojis: ['1F47B', '1F383', '1f9df', '1F479'],
+        },
+        christmas: {
+          from: '12-20',
+          to: '12-25',
+          emojis: ['1F384', '1F381', '2603', '1F385'],
+        },
+        // newYear: {
+        //   from: '12-26',
+        //   to: '01-01',
+        //   emojis: ['1F47B', '1F383', '1f9df', '1F479'],
+        // },
+      },
+    };
+  },
   computed: {
     randomEmoji() {
-      return String.fromCodePoint(
-        '0x' +
-          ['1F47B', '1F383', '1f9df', '1F479'][Math.floor(Math.random() * 4)]
-      );
+      let holidayPack = null;
+      let currentDate = new Date();
+      let currentDay = currentDate.getDate();
+      let currentMonth = currentDate.getMonth() + 1;
+      for (const occasion in this.holidays) {
+        let from = {
+          month: parseInt(this.holidays[occasion].from.split('-')[0]),
+          day: parseInt(this.holidays[occasion].from.split('-')[1]),
+        };
+        let to = {
+          month: parseInt(this.holidays[occasion].to.split('-')[0]),
+          day: parseInt(this.holidays[occasion].to.split('-')[1]),
+        };
+
+        if (
+          currentMonth <= to.month &&
+          currentMonth >= from.month &&
+          currentDay <= to.day &&
+          currentDay >= from.day
+        ) {
+          holidayPack = this.holidays[occasion];
+        }
+      }
+      return holidayPack
+        ? String.fromCodePoint(
+            '0x' + holidayPack.emojis[Math.floor(Math.random() * 4)]
+          )
+        : '';
     },
   },
 };
